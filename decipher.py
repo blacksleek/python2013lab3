@@ -1,6 +1,6 @@
 from collections import Counter
 infile = open("MYSTERY.IN", mode="r")
-decrypt = open("MYSTERY_DECRYPT.OUT", mode="a")
+decrypted = open("MYSTERY_DECRYPT.OUT", mode="r")
 outfile = open("RESULT.OUT", mode="a")
 
 
@@ -12,7 +12,7 @@ def decrypt(file):
 
 def most_common_3():
     word_list = []
-    for line in decrypt.readlines():
+    for line in decrypted.readlines():
         for word in line.split(" "): #extract words from lines
             word_list.append(word)
 
@@ -21,9 +21,9 @@ def most_common_3():
         if counter == 3:
             break
         elif len(i[0]) > 4: #removing non-nouns (eg. a, the, we)
-            outfile.write(i[0] + " ")
+            print(i[0] + " ")
             counter = counter + 1
-
+most_common_3()
 infile.close()
-decrypt.close()
+decrypted.close()
 outfile.close()
